@@ -2,13 +2,13 @@ import requests
 import datetime as dt
 
 BASE_URL = "https://api.openweathermap.org/data/2.5/weather?"
-API_KEY = open("C:\\Users\\shrey\\OneDrive\\Documents\\major projects\\weather_analysis_tool\\api_key.txt", "r").read().strip()  # Ensure no extra spaces
+API_KEY = open("Enter the path to your api key", "r").read().strip()  
 city = input("enter city name:").strip()
 
-# Construct the correct API URL
+
 url = f"{BASE_URL}appid={API_KEY}&q={city}"
 
-# Make API request
+
 response = requests.get(url)
 if response.status_code == 200:
     response = response.json() 
@@ -43,20 +43,10 @@ if response.status_code == 200:
     sunrise_time = dt.datetime.utcfromtimestamp(response['sys']['sunrise'] + response['timezone'])
     sunset_time = dt.datetime.utcfromtimestamp(response['sys']['sunset'] + response['timezone'])
 
-    # print(f"Temperature in {city}: {temp_celsius}°C or {temp_fahreneit}°F")
-    # print(f"Feels like: {temp_celsius_feel}°C or {temp_fahreneit_feel}°F")
-    # print(f"Humidity: {humidity}%")
-    # print(f"Wind speed: {wind_speed} m/s")
-    # print(f"Description: {description}")
-    # print(f"Sunrise time: {sunrise_time}")
-    # print(f"Sunset time: {sunset_time}")
-
 else:
     print(f"Error {response.status_code}: {response.json().get('message', 'Unknown error')}")
 
 
-
-# Generate HTML content
 html_content = f"""
 <!DOCTYPE html>
 <html lang="en">
@@ -102,7 +92,7 @@ html_content = f"""
 </head>
 <body>
     <div class="container">
-        <h1>Weather Report 🌍</h1>
+        <h1>Weather Report</h1>
         <div id="weather-info">
             <p><strong>City:</strong> {city}</p>
             <p><strong>Temperature:</strong> {temp_celsius:.2f} °C or {temp_fahrenheit:.2f} °F</p>

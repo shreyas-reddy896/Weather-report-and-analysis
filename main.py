@@ -1,6 +1,7 @@
 import requests
 import datetime as dt
 
+#Create an openweather account, store the api key in a document and add it in the same directory as the main program and add the path to the "API_KEY"
 BASE_URL = "https://api.openweathermap.org/data/2.5/weather?"
 API_KEY = open("Enter the path to your api key", "r").read().strip()  
 city = input("enter city name:").strip()
